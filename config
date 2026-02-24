@@ -1,0 +1,14 @@
+Host public-ec2
+  HostName 13.201.33.149
+  User ubuntu
+  IdentityFile C:\Users\iyas2\Downloads\iyask_keypair.pem
+  ServerAliveInterval 60
+  ServerAliveCountMax 5
+
+Host private-ec2
+  HostName 10.0.2.93
+  User ubuntu
+  IdentityFile C:\Users\iyas2\Downloads\iyask_keypair.pem
+  ProxyJump public-ec2
+  ServerAliveInterval 60
+  ServerAliveCountMax 5
