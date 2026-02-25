@@ -1,0 +1,18 @@
+[Unit]
+Description=Gunicorn instance to serve Analytics Service
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/analytics-service
+Environment="PATH=/home/ubuntu/analytics-service/venv/bin"
+EnvironmentFile=/home/ubuntu/analytics-service/.env
+ExecStart=/home/ubuntu/analytics-service/venv/bin/gunicorn \
+    --workers 4 \
+    --worker-class uvicorn.workers.UvicornWorker \
+    --bind 0.0.0.0:8001 \
+    app.main:app
+
+[Install]
+WantedBy=multi-user.target
